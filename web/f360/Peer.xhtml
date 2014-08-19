@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/common/template.xhtml">
+        <ui:define name="title">
+
+        </ui:define>
+        <ui:define name="body">
+            <h:form id="form">
+                <p:growl id="messages" showDetail="true"/>  
+
+                <p:dataTable id="table" value="#{f360QuestionPeerController.getFacultyList()}" style="width: 70%" var="item" >                      
+                    <p:column style="font-size: large">
+                        <f:facet name="header">
+                            <h:outputText value="Faculty Name"/>
+                        </f:facet>
+                        <h:outputText value="#{item.facultyFname}#{' '}#{item.facultyLname}"/>
+                    </p:column>
+                    <p:column style="text-align: center; width: 20px;">
+                        <f:facet name="header">
+                            <h:outputText value="Interaction??"/>
+                        </f:facet>
+                        <p:selectBooleanCheckbox value="#{f360PeerInteractionController.value[item.idFaculty]}">
+                            <p:ajax listener="#{f360PeerInteractionController.ajaxCreate()}" update=":form:table :form:messages" />
+                        </p:selectBooleanCheckbox>
+                    </p:column>
+                    <p:column id="feedback360allowed">
+                        <p:commandButton rendered="#{f360PeerInteractionController.getByIdFac(item) != null}" action="#{f360FeedbackPeerController.giveFeedback(item)}"  value="Give Feedback" />
+                    </p:column>
+                    <p:column style="text-align: center; width: 20px;">
+                        <f:facet name="header">
+                            <h:outputText value="Commented"/>
+                        </f:facet>
+                        <h:outputText rendered="#{f360CommentsPeerController.getComment(item) != null}"  value="Yes" />
+                    </p:column>
+                    <p:column style="text-align: center; width: 20px;">
+                        <f:facet name="header">
+                            <h:outputText value="Rated"/>
+                        </f:facet>
+                        <h:outputText rendered="#{f360PeerInteractionController.getByIdFac(item) != null}"  value="#{(f360FeedbackPeerController.getItemsUsers(f360UserController.getF360User(facesContext.externalContext.remoteUser), item)).size()}#{' / 37'}" />
+                    </p:column>
+
+                </p:dataTable>
+
+                
+            </h:form>
+            
+
+        </ui:define>
+    </ui:composition>
+
+</html>

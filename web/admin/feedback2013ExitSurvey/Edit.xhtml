@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditFeedback2013ExitSurveyTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditFeedback2013ExitSurveyLabel_idFeedback2013exitsurvey}" for="idFeedback2013exitsurvey" />
+                    <h:inputText id="idFeedback2013exitsurvey" value="#{feedback2013ExitSurveyController.selected.idFeedback2013exitsurvey}" title="#{bundle.EditFeedback2013ExitSurveyTitle_idFeedback2013exitsurvey}" required="true" requiredMessage="#{bundle.EditFeedback2013ExitSurveyRequiredMessage_idFeedback2013exitsurvey}"/>
+                    <h:outputLabel value="#{bundle.EditFeedback2013ExitSurveyLabel_idSubjectQuestions}" for="idSubjectQuestions" />
+                    <h:inputText id="idSubjectQuestions" value="#{feedback2013ExitSurveyController.selected.idSubjectQuestions}" title="#{bundle.EditFeedback2013ExitSurveyTitle_idSubjectQuestions}" />
+                    <h:outputLabel value="#{bundle.EditFeedback2013ExitSurveyLabel_ans}" for="ans" />
+                    <h:inputText id="ans" value="#{feedback2013ExitSurveyController.selected.ans}" title="#{bundle.EditFeedback2013ExitSurveyTitle_ans}" />
+                    <h:outputLabel value="#{bundle.EditFeedback2013ExitSurveyLabel_subjectQuestion}" for="subjectQuestion" />
+                    <h:selectOneMenu id="subjectQuestion" value="#{feedback2013ExitSurveyController.selected.subjectQuestion}" title="#{bundle.EditFeedback2013ExitSurveyTitle_subjectQuestion}" required="true" requiredMessage="#{bundle.EditFeedback2013ExitSurveyRequiredMessage_subjectQuestion}">
+                        <f:selectItems value="#{subjectQuestionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditFeedback2013ExitSurveyLabel_uid}" for="uid" />
+                    <h:selectOneMenu id="uid" value="#{feedback2013ExitSurveyController.selected.uid}" title="#{bundle.EditFeedback2013ExitSurveyTitle_uid}" >
+                        <f:selectItems value="#{feedback2013StudentController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{feedback2013ExitSurveyController.update}" value="#{bundle.EditFeedback2013ExitSurveySaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditFeedback2013ExitSurveyViewLink}"/>
+                <br />
+                <h:commandLink action="#{feedback2013ExitSurveyController.prepareList}" value="#{bundle.EditFeedback2013ExitSurveyShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditFeedback2013ExitSurveyIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

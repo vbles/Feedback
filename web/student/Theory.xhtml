@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/common/template.xhtml">
+        <ui:define name="title">
+
+        </ui:define>
+        <ui:define name="body">
+            <br />
+            <h:outputText value="* - Strongly Disagree" />
+            <br />
+            <h:outputText value="** - Disagree" />
+            <br />
+            <h:outputText value="*** - Neutral" />
+            <br />
+            <h:outputText value="**** - Agree" />
+            <br />
+            <h:outputText value="***** - Strongly Agree" />
+            <br />
+            <h:form id="form">
+                <p:growl id="messages" showDetail="true"/>  
+
+                <h:outputText style="font-size: 30px" value="#{feedback2013QuestionController.getqNo()}#{'.  '}#{feedback2013QuestionController.getqText()}"></h:outputText>
+
+
+
+                <p:dataTable value="#{facultySubjectController.theory}" style="width: 50%" var="item" >                      
+                    <p:column style="font-size: large">
+                        <f:facet name="header">
+                            <h:outputText value="Faculty Name"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idFaculty.facultyFname}#{' '}#{item.idFaculty.facultyLname}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Subject"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idSubject.subjectCode}"/>
+                    </p:column>
+                    <p:column id="rating">
+                        <f:facet name="header">
+                            <h:outputText value="Rating"/>
+                        </f:facet>
+                        <p:rating  value="#{item.rating}" />
+                    </p:column>
+
+                </p:dataTable>
+
+                <br />
+                <h:outputText style="font-size: 30px" value="#{feedback2013QuestionController.getqNo2()}#{'.  '}#{feedback2013QuestionController.getqText2()}"></h:outputText>
+
+                <p:dataTable id="tbl" value="#{facultySubjectController.theory}" style="width: 50%" var="item" >                      
+                    <p:column style="font-size: large">
+                        <f:facet name="header">
+                            <h:outputText value="Faculty Name"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idFaculty.facultyFname}#{' '}#{item.idFaculty.facultyLname}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Subject"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idSubject.subjectCode}"/>
+                    </p:column>
+                    <p:column id="rating">
+                        <f:facet name="header">
+                            <h:outputText value="Subject"/>
+                        </f:facet>
+                        <p:rating  value="#{item.rating2}" />
+                    </p:column>
+
+                </p:dataTable>
+                <br />
+                <p:commandButton action="#{feedback2013QuestionController.nextQuestion(0)}" update=":form" value="Next" />
+            </h:form>
+            
+
+        </ui:define>
+    </ui:composition>
+
+</html>

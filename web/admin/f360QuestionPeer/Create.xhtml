@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/common/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateF360QuestionPeerTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateF360QuestionPeerLabel_qid}" for="qid" />
+                    <h:inputText id="qid" value="#{f360QuestionPeerController.selected.qid}" title="#{bundle.CreateF360QuestionPeerTitle_qid}" required="true" requiredMessage="#{bundle.CreateF360QuestionPeerRequiredMessage_qid}"/>
+                    <h:outputLabel value="#{bundle.CreateF360QuestionPeerLabel_qtext}" for="qtext" />
+                    <h:inputText id="qtext" value="#{f360QuestionPeerController.selected.qtext}" title="#{bundle.CreateF360QuestionPeerTitle_qtext}" required="true" requiredMessage="#{bundle.CreateF360QuestionPeerRequiredMessage_qtext}"/>
+                    <h:outputLabel value="#{bundle.CreateF360QuestionPeerLabel_qtype}" for="qtype" />
+                    <h:inputText id="qtype" value="#{f360QuestionPeerController.selected.qtype}" title="#{bundle.CreateF360QuestionPeerTitle_qtype}" required="true" requiredMessage="#{bundle.CreateF360QuestionPeerRequiredMessage_qtype}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{f360QuestionPeerController.create}" value="#{bundle.CreateF360QuestionPeerSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{f360QuestionPeerController.prepareList}" value="#{bundle.CreateF360QuestionPeerShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateF360QuestionPeerIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

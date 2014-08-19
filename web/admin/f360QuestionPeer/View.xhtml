@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/common/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewF360QuestionPeerTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewF360QuestionPeerLabel_qid}"/>
+                    <h:outputText value="#{f360QuestionPeerController.selected.qid}" title="#{bundle.ViewF360QuestionPeerTitle_qid}"/>
+                    <h:outputText value="#{bundle.ViewF360QuestionPeerLabel_qtext}"/>
+                    <h:outputText value="#{f360QuestionPeerController.selected.qtext}" title="#{bundle.ViewF360QuestionPeerTitle_qtext}"/>
+                    <h:outputText value="#{bundle.ViewF360QuestionPeerLabel_qtype}"/>
+                    <h:outputText value="#{f360QuestionPeerController.selected.qtype}" title="#{bundle.ViewF360QuestionPeerTitle_qtype}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{f360QuestionPeerController.destroyAndView}" value="#{bundle.ViewF360QuestionPeerDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewF360QuestionPeerEditLink}"/>
+                <br />
+                <h:commandLink action="#{f360QuestionPeerController.prepareCreate}" value="#{bundle.ViewF360QuestionPeerCreateLink}" />
+                <br />
+                <h:commandLink action="#{f360QuestionPeerController.prepareList}" value="#{bundle.ViewF360QuestionPeerShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewF360QuestionPeerIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

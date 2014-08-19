@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/common/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditF360CommentsPeerTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditF360CommentsPeerLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{f360CommentsPeerController.selected.id}" title="#{bundle.EditF360CommentsPeerTitle_id}" required="true" requiredMessage="#{bundle.EditF360CommentsPeerRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditF360CommentsPeerLabel_comments}" for="comments" />
+                    <h:inputTextarea rows="4" cols="30" id="comments" value="#{f360CommentsPeerController.selected.comments}" title="#{bundle.EditF360CommentsPeerTitle_comments}" />
+                    <h:outputLabel value="#{bundle.EditF360CommentsPeerLabel_idFaculty}" for="idFaculty" />
+                    <h:selectOneMenu id="idFaculty" value="#{f360CommentsPeerController.selected.idFaculty}" title="#{bundle.EditF360CommentsPeerTitle_idFaculty}" required="true" requiredMessage="#{bundle.EditF360CommentsPeerRequiredMessage_idFaculty}">
+                        <f:selectItems value="#{facultyController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditF360CommentsPeerLabel_uid}" for="uid" />
+                    <h:selectOneMenu id="uid" value="#{f360CommentsPeerController.selected.uid}" title="#{bundle.EditF360CommentsPeerTitle_uid}" >
+                        <f:selectItems value="#{f360UserController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{f360CommentsPeerController.update}" value="#{bundle.EditF360CommentsPeerSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditF360CommentsPeerViewLink}"/>
+                <br />
+                <h:commandLink action="#{f360CommentsPeerController.prepareList}" value="#{bundle.EditF360CommentsPeerShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditF360CommentsPeerIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

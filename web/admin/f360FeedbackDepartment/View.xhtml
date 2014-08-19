@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/common/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewF360FeedbackDepartmentTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewF360FeedbackDepartmentLabel_id}"/>
+                    <h:outputText value="#{f360FeedbackDepartmentController.selected.id}" title="#{bundle.ViewF360FeedbackDepartmentTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewF360FeedbackDepartmentLabel_qid}"/>
+                    <h:outputText value="#{f360FeedbackDepartmentController.selected.qid}" title="#{bundle.ViewF360FeedbackDepartmentTitle_qid}"/>
+                    <h:outputText value="#{bundle.ViewF360FeedbackDepartmentLabel_idAns}"/>
+                    <h:outputText value="#{f360FeedbackDepartmentController.selected.idAns}" title="#{bundle.ViewF360FeedbackDepartmentTitle_idAns}"/>
+                    <h:outputText value="#{bundle.ViewF360FeedbackDepartmentLabel_uid}"/>
+                    <h:outputText value="#{f360FeedbackDepartmentController.selected.uid}" title="#{bundle.ViewF360FeedbackDepartmentTitle_uid}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{f360FeedbackDepartmentController.destroyAndView}" value="#{bundle.ViewF360FeedbackDepartmentDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewF360FeedbackDepartmentEditLink}"/>
+                <br />
+                <h:commandLink action="#{f360FeedbackDepartmentController.prepareCreate}" value="#{bundle.ViewF360FeedbackDepartmentCreateLink}" />
+                <br />
+                <h:commandLink action="#{f360FeedbackDepartmentController.prepareList}" value="#{bundle.ViewF360FeedbackDepartmentShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewF360FeedbackDepartmentIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

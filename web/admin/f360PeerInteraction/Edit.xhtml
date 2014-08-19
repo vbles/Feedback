@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/common/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditF360PeerInteractionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditF360PeerInteractionLabel_idF360PeerInteraction}" for="idF360PeerInteraction" />
+                    <h:inputText id="idF360PeerInteraction" value="#{f360PeerInteractionController.selected.idF360PeerInteraction}" title="#{bundle.EditF360PeerInteractionTitle_idF360PeerInteraction}" required="true" requiredMessage="#{bundle.EditF360PeerInteractionRequiredMessage_idF360PeerInteraction}"/>
+                    <h:outputLabel value="#{bundle.EditF360PeerInteractionLabel_idFaculty}" for="idFaculty" />
+                    <h:selectOneMenu id="idFaculty" value="#{f360PeerInteractionController.selected.idFaculty}" title="#{bundle.EditF360PeerInteractionTitle_idFaculty}" >
+                        <f:selectItems value="#{facultyController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditF360PeerInteractionLabel_uid}" for="uid" />
+                    <h:selectOneMenu id="uid" value="#{f360PeerInteractionController.selected.uid}" title="#{bundle.EditF360PeerInteractionTitle_uid}" >
+                        <f:selectItems value="#{f360UserController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{f360PeerInteractionController.update}" value="#{bundle.EditF360PeerInteractionSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditF360PeerInteractionViewLink}"/>
+                <br />
+                <h:commandLink action="#{f360PeerInteractionController.prepareList}" value="#{bundle.EditF360PeerInteractionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditF360PeerInteractionIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

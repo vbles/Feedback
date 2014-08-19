@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/common/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListF360FeedbackPeerTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListF360FeedbackPeerEmpty}" rendered="#{f360FeedbackPeerController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{f360FeedbackPeerController.items.rowCount > 0}">
+                    <h:outputText value="#{f360FeedbackPeerController.pagination.pageFirstItem + 1}..#{f360FeedbackPeerController.pagination.pageLastItem + 1}/#{f360FeedbackPeerController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{f360FeedbackPeerController.previous}" value="#{bundle.Previous} #{f360FeedbackPeerController.pagination.pageSize}" rendered="#{f360FeedbackPeerController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{f360FeedbackPeerController.next}" value="#{bundle.Next} #{f360FeedbackPeerController.pagination.pageSize}" rendered="#{f360FeedbackPeerController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{f360FeedbackPeerController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListF360FeedbackPeerTitle_idF360FeedbackPeer}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idF360FeedbackPeer}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListF360FeedbackPeerTitle_qid}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.qid}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListF360FeedbackPeerTitle_idAns}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idAns}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListF360FeedbackPeerTitle_idFaculty}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idFaculty}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListF360FeedbackPeerTitle_uid}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.uid}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{f360FeedbackPeerController.prepareView}" value="#{bundle.ListF360FeedbackPeerViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{f360FeedbackPeerController.prepareEdit}" value="#{bundle.ListF360FeedbackPeerEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{f360FeedbackPeerController.destroy}" value="#{bundle.ListF360FeedbackPeerDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{f360FeedbackPeerController.prepareCreate}" value="#{bundle.ListF360FeedbackPeerCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListF360FeedbackPeerIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

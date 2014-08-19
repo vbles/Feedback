@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/common/template.xhtml">
+        <ui:define name="title">
+
+            <h:outputText value="Feedback"></h:outputText>
+        </ui:define>
+        <ui:define name="body"> 
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:panelGroup  style="text-align: center; font-size: 100%; vertical-align: text-top">
+                    <p:commandButton rendered="#{feedback2013StudentController.loggedUser.semester eq 2}" action="#{subjectQuestionController.navCourseSurvey}" immediate="true" value="Course Exit Survey" ></p:commandButton>
+                    <br/>
+                    <p:commandButton rendered="#{!feedback2013QuestionController.submitTheory}" action="#{feedback2013QuestionController.theoryQuestionnaire1()}" immediate ="true" value="Theory" ></p:commandButton>
+                    <p:commandButton rendered="false" action="#{feedback2013QuestionController.practicalQuestionnaire1()}" immediate="true" value="Practical" ></p:commandButton>
+                    <p:outputLabel style="font-size: larger" rendered="#{feedback2013QuestionController.submitPractical and feedback2013QuestionController.submitTheory }" value="Thank you for your valuable feedback. Please leave us suggestions on how to improve this experience." />
+                    <br />
+                    <br />
+                    
+                    <p:commandButton rendered="#{feedback2013QuestionController.submitPractical and feedback2013QuestionController.submitTheory }" value="Suggestions" action="#{feedback2013SuggestionsController.prepareSuggestion()}" ajax="false" />
+                    <p:commandButton rendered="#{feedback2013QuestionController.submitPractical and feedback2013QuestionController.submitTheory }" action="#{authBackingBean.logout()}" value="Logout" ajax="false" />
+
+                    <!-- and subjectQuestionController.submitCourse -->
+                    
+                </h:panelGroup>
+
+
+
+            </h:form>
+
+            <br />
+            <br />
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,30 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package beans;
+
+import entities.F360QuetionTypes;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+/**
+ *
+ * @author Ashish Mathew
+ */
+@Stateless
+public class F360QuetionTypesFacade extends AbstractFacade<F360QuetionTypes> {
+    @PersistenceContext(unitName = "FeedbackJPAPU")
+    private EntityManager em;
+
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
+    }
+
+    public F360QuetionTypesFacade() {
+        super(F360QuetionTypes.class);
+    }
+    
+}

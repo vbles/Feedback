@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:commandButton  action="#{feedback2013UserController.updatePassword()}" value="Update Passwords and Groups." />
+            <br />
+            <h:commandButton action="#{authBackingBean.logout()}" value="Logout"/>
+
+        </h:form>
+        <h:form id="frm">
+            <p:growl id="growl" showDetail="true"/>        
+
+            <p:inputText  value="#{feedback2013StudentController.userID}" />
+            <p:commandButton action="#{feedback2013StudentController.reset()}" value="Reset" update=":frm:growl"/>
+            <p:commandButton action="#{feedback2013StudentController.viewPassword()}" value="View Password" update=":frm:growl"/>
+            <p:commandButton action="#{feedback2013StudentController.viewIP()}" value="View IP" update=":frm:growl"/>
+            <p:commandButton action="#{feedback2013StudentController.logoutID()}" value="Log out User" update=":frm:growl"/>
+
+        </h:form>
+        <h:form >
+            <p:poll interval="5" update="loggedIn" />      
+
+            <p:dataTable scrollable="true" scrollRows="20" id="loggedIn" rowIndexVar="i" value="#{feedback2013StudentController.loggedInUsers}" var ="c" >
+                <p:column style="width: 10%">
+                    #{i+1}
+                </p:column>
+                <p:column style="width: 20%">
+                    #{c.uid}
+                </p:column>
+                <p:column>
+                    <p:commandButton action="#{feedback2013StudentController.reset(c.uid)}" value="Reset" update=":frm:growl,loggedIn"/>
+                    <p:commandButton action="#{feedback2013StudentController.logoutID(c.uid)}" value="Log out User" update=":frm:growl,loggedIn"/>
+                </p:column>
+                <p:column style="width: 20%">
+                    <h:outputText value="#{c.loginTime}">
+                        <f:convertDateTime timeZone="IST" pattern="hh:mm:ss" />
+                    </h:outputText>
+                </p:column>
+                <p:column style="width: 20%">
+                    #{c.ipAddress}
+                </p:column>
+                
+            </p:dataTable>
+        </h:form>
+        
+        <br />
+        <h:link outcome="/admin/course/List" value="Show All Course Items"/>
+        <br />
+        <h:link outcome="/admin/faculty/List" value="Show All Faculty Items"/>
+        <br />
+        <h:link outcome="/admin/facultySubject/List" value="Show All FacultySubject Items"/>
+        <br />
+        <h:link outcome="/admin/feedback2013/List" value="Show All Feedback2013 Items"/>
+        <br />
+        <h:link outcome="/admin/feedback2013Comments/List" value="Show All Feedback2013Comments Items"/>
+        <br />
+        <h:link outcome="/admin/feedback2013Question/List" value="Show All Feedback2013Question Items"/>
+        <br />
+        <h:link outcome="/admin/feedback2013Student/List" value="Show All Feedback2013Student Items"/>
+        <br />
+        <h:link outcome="/admin/program/List" value="Show All Program Items"/>
+        <br />
+        <h:link outcome="/admin/subject/List" value="Show All Subject Items"/>
+        <br />
+        <h:link outcome="/admin/course/List" value="Show All Course Items"/>
+        <br />
+        <h:link outcome="/admin/feedback2013Student/List" value="Show All Feedback2013Student Items"/>
+        <br />
+        <h:link outcome="/admin/program/List" value="Show All Program Items"/>
+        <br />
+        <h:link outcome="/admin/programCourse/List" value="Show All ProgramCourse Items"/>
+        <br />
+        <h:link outcome="/admin/feedback2013User/List" value="Show All Feedback2013User Items"/>
+        <br />
+        <h:link outcome="/admin/fuserGroup/List" value="Show All FuserGroup Items"/>
+        <br />
+        <h:link outcome="/admin/feedback2013Suggestions/List" value="Show All Feedback2013Suggestions Items"/>
+        <br />
+        <h:link outcome="/admin/f360CommentsDepartment/List" value="Show All F360CommentsDepartment Items"/>
+        <br />
+        <h:link outcome="/admin/f360CommentsPeer/List" value="Show All F360CommentsPeer Items"/>
+        <br />
+        <h:link outcome="/admin/f360FeedbackDepartment/List" value="Show All F360FeedbackDepartment Items"/>
+        <br />
+        <h:link outcome="/admin/f360FeedbackPeer/List" value="Show All F360FeedbackPeer Items"/>
+        <br />
+        <h:link outcome="/admin/f360QuestionDepartment/List" value="Show All F360QuestionDepartment Items"/>
+        <br />
+        <h:link outcome="/admin/f360QuestionPeer/List" value="Show All F360QuestionPeer Items"/>
+        <br />
+        <h:link outcome="/admin/f360QuetionTypes/List" value="Show All F360QuetionTypes Items"/>
+        <br />
+        <h:link outcome="/admin/f360User/List" value="Show All F360User Items"/>
+        <br />
+        <h:link outcome="/admin/faculty/List" value="Show All Faculty Items"/>
+        <br />
+        <h:link outcome="/admin/f360PeerInteraction/List" value="Show All F360PeerInteraction Items"/>
+   
+
+    </h:body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
+

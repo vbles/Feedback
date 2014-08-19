@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/common/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateF360UserTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateF360UserLabel_uid}" for="uid" />
+                    <h:inputText id="uid" value="#{f360UserController.selected.uid}" title="#{bundle.CreateF360UserTitle_uid}" required="true" requiredMessage="#{bundle.CreateF360UserRequiredMessage_uid}"/>
+                    <h:outputLabel value="#{bundle.CreateF360UserLabel_pwd}" for="pwd" />
+                    <h:inputText id="pwd" value="#{f360UserController.selected.pwd}" title="#{bundle.CreateF360UserTitle_pwd}" required="true" requiredMessage="#{bundle.CreateF360UserRequiredMessage_pwd}"/>
+                    <h:outputLabel value="#{bundle.CreateF360UserLabel_department}" for="department" />
+                    <h:inputText id="department" value="#{f360UserController.selected.department}" title="#{bundle.CreateF360UserTitle_department}" />
+                    <h:outputLabel value="#{bundle.CreateF360UserLabel_timeFirstLogin}" for="timeFirstLogin" />
+                    <h:inputText id="timeFirstLogin" value="#{f360UserController.selected.timeFirstLogin}" title="#{bundle.CreateF360UserTitle_timeFirstLogin}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateF360UserLabel_timeLastLogout}" for="timeLastLogout" />
+                    <h:inputText id="timeLastLogout" value="#{f360UserController.selected.timeLastLogout}" title="#{bundle.CreateF360UserTitle_timeLastLogout}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{f360UserController.create}" value="#{bundle.CreateF360UserSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{f360UserController.prepareList}" value="#{bundle.CreateF360UserShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateF360UserIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

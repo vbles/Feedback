@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/common/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListF360QuestionPeerTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListF360QuestionPeerEmpty}" rendered="#{f360QuestionPeerController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{f360QuestionPeerController.items.rowCount > 0}">
+                    <h:outputText value="#{f360QuestionPeerController.pagination.pageFirstItem + 1}..#{f360QuestionPeerController.pagination.pageLastItem + 1}/#{f360QuestionPeerController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{f360QuestionPeerController.previous}" value="#{bundle.Previous} #{f360QuestionPeerController.pagination.pageSize}" rendered="#{f360QuestionPeerController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{f360QuestionPeerController.next}" value="#{bundle.Next} #{f360QuestionPeerController.pagination.pageSize}" rendered="#{f360QuestionPeerController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{f360QuestionPeerController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListF360QuestionPeerTitle_qid}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.qid}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListF360QuestionPeerTitle_qtext}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.qtext}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListF360QuestionPeerTitle_qtype}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.qtype}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{f360QuestionPeerController.prepareView}" value="#{bundle.ListF360QuestionPeerViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{f360QuestionPeerController.prepareEdit}" value="#{bundle.ListF360QuestionPeerEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{f360QuestionPeerController.destroy}" value="#{bundle.ListF360QuestionPeerDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{f360QuestionPeerController.prepareCreate}" value="#{bundle.ListF360QuestionPeerCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListF360QuestionPeerIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/common/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewFuserGroupTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewFuserGroupLabel_fuserGroupPK_userName}"/>
+                    <h:outputText value="#{fuserGroupController.selected.fuserGroupPK.userName}" title="#{bundle.ViewFuserGroupTitle_fuserGroupPK_userName}"/>
+                    <h:outputText value="#{bundle.ViewFuserGroupLabel_fuserGroupPK_roleName}"/>
+                    <h:outputText value="#{fuserGroupController.selected.fuserGroupPK.roleName}" title="#{bundle.ViewFuserGroupTitle_fuserGroupPK_roleName}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{fuserGroupController.destroyAndView}" value="#{bundle.ViewFuserGroupDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewFuserGroupEditLink}"/>
+                <br />
+                <h:commandLink action="#{fuserGroupController.prepareCreate}" value="#{bundle.ViewFuserGroupCreateLink}" />
+                <br />
+                <h:commandLink action="#{fuserGroupController.prepareList}" value="#{bundle.ViewFuserGroupShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewFuserGroupIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

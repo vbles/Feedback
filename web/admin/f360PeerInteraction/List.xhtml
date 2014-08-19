@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/common/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListF360PeerInteractionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListF360PeerInteractionEmpty}" rendered="#{f360PeerInteractionController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{f360PeerInteractionController.items.rowCount > 0}">
+                    <h:outputText value="#{f360PeerInteractionController.pagination.pageFirstItem + 1}..#{f360PeerInteractionController.pagination.pageLastItem + 1}/#{f360PeerInteractionController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{f360PeerInteractionController.previous}" value="#{bundle.Previous} #{f360PeerInteractionController.pagination.pageSize}" rendered="#{f360PeerInteractionController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{f360PeerInteractionController.next}" value="#{bundle.Next} #{f360PeerInteractionController.pagination.pageSize}" rendered="#{f360PeerInteractionController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{f360PeerInteractionController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListF360PeerInteractionTitle_idF360PeerInteraction}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idF360PeerInteraction}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListF360PeerInteractionTitle_idFaculty}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idFaculty}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListF360PeerInteractionTitle_uid}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.uid}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{f360PeerInteractionController.prepareView}" value="#{bundle.ListF360PeerInteractionViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{f360PeerInteractionController.prepareEdit}" value="#{bundle.ListF360PeerInteractionEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{f360PeerInteractionController.destroy}" value="#{bundle.ListF360PeerInteractionDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{f360PeerInteractionController.prepareCreate}" value="#{bundle.ListF360PeerInteractionCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListF360PeerInteractionIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

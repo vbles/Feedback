@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/common/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewF360QuetionTypesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewF360QuetionTypesLabel_idType}"/>
+                    <h:outputText value="#{f360QuetionTypesController.selected.idType}" title="#{bundle.ViewF360QuetionTypesTitle_idType}"/>
+                    <h:outputText value="#{bundle.ViewF360QuetionTypesLabel_typeText}"/>
+                    <h:outputText value="#{f360QuetionTypesController.selected.typeText}" title="#{bundle.ViewF360QuetionTypesTitle_typeText}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{f360QuetionTypesController.destroyAndView}" value="#{bundle.ViewF360QuetionTypesDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewF360QuetionTypesEditLink}"/>
+                <br />
+                <h:commandLink action="#{f360QuetionTypesController.prepareCreate}" value="#{bundle.ViewF360QuetionTypesCreateLink}" />
+                <br />
+                <h:commandLink action="#{f360QuetionTypesController.prepareList}" value="#{bundle.ViewF360QuetionTypesShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewF360QuetionTypesIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/common/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditF360FeedbackPeerTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditF360FeedbackPeerLabel_idF360FeedbackPeer}" for="idF360FeedbackPeer" />
+                    <h:inputText id="idF360FeedbackPeer" value="#{f360FeedbackPeerController.selected.idF360FeedbackPeer}" title="#{bundle.EditF360FeedbackPeerTitle_idF360FeedbackPeer}" required="true" requiredMessage="#{bundle.EditF360FeedbackPeerRequiredMessage_idF360FeedbackPeer}"/>
+                    <h:outputLabel value="#{bundle.EditF360FeedbackPeerLabel_qid}" for="qid" />
+                    <h:inputText id="qid" value="#{f360FeedbackPeerController.selected.qid}" title="#{bundle.EditF360FeedbackPeerTitle_qid}" required="true" requiredMessage="#{bundle.EditF360FeedbackPeerRequiredMessage_qid}"/>
+                    <h:outputLabel value="#{bundle.EditF360FeedbackPeerLabel_idAns}" for="idAns" />
+                    <h:inputText id="idAns" value="#{f360FeedbackPeerController.selected.idAns}" title="#{bundle.EditF360FeedbackPeerTitle_idAns}" required="true" requiredMessage="#{bundle.EditF360FeedbackPeerRequiredMessage_idAns}"/>
+                    <h:outputLabel value="#{bundle.EditF360FeedbackPeerLabel_idFaculty}" for="idFaculty" />
+                    <h:selectOneMenu id="idFaculty" value="#{f360FeedbackPeerController.selected.idFaculty}" title="#{bundle.EditF360FeedbackPeerTitle_idFaculty}" >
+                        <f:selectItems value="#{facultyController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditF360FeedbackPeerLabel_uid}" for="uid" />
+                    <h:selectOneMenu id="uid" value="#{f360FeedbackPeerController.selected.uid}" title="#{bundle.EditF360FeedbackPeerTitle_uid}" required="true" requiredMessage="#{bundle.EditF360FeedbackPeerRequiredMessage_uid}">
+                        <f:selectItems value="#{f360UserController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{f360FeedbackPeerController.update}" value="#{bundle.EditF360FeedbackPeerSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditF360FeedbackPeerViewLink}"/>
+                <br />
+                <h:commandLink action="#{f360FeedbackPeerController.prepareList}" value="#{bundle.EditF360FeedbackPeerShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditF360FeedbackPeerIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

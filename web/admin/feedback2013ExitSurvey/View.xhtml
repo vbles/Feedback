@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewFeedback2013ExitSurveyTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewFeedback2013ExitSurveyLabel_idFeedback2013exitsurvey}"/>
+                    <h:outputText value="#{feedback2013ExitSurveyController.selected.idFeedback2013exitsurvey}" title="#{bundle.ViewFeedback2013ExitSurveyTitle_idFeedback2013exitsurvey}"/>
+                    <h:outputText value="#{bundle.ViewFeedback2013ExitSurveyLabel_idSubjectQuestions}"/>
+                    <h:outputText value="#{feedback2013ExitSurveyController.selected.idSubjectQuestions}" title="#{bundle.ViewFeedback2013ExitSurveyTitle_idSubjectQuestions}"/>
+                    <h:outputText value="#{bundle.ViewFeedback2013ExitSurveyLabel_ans}"/>
+                    <h:outputText value="#{feedback2013ExitSurveyController.selected.ans}" title="#{bundle.ViewFeedback2013ExitSurveyTitle_ans}"/>
+                    <h:outputText value="#{bundle.ViewFeedback2013ExitSurveyLabel_subjectQuestion}"/>
+                    <h:outputText value="#{feedback2013ExitSurveyController.selected.subjectQuestion}" title="#{bundle.ViewFeedback2013ExitSurveyTitle_subjectQuestion}"/>
+                    <h:outputText value="#{bundle.ViewFeedback2013ExitSurveyLabel_uid}"/>
+                    <h:outputText value="#{feedback2013ExitSurveyController.selected.uid}" title="#{bundle.ViewFeedback2013ExitSurveyTitle_uid}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{feedback2013ExitSurveyController.destroyAndView}" value="#{bundle.ViewFeedback2013ExitSurveyDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewFeedback2013ExitSurveyEditLink}"/>
+                <br />
+                <h:commandLink action="#{feedback2013ExitSurveyController.prepareCreate}" value="#{bundle.ViewFeedback2013ExitSurveyCreateLink}" />
+                <br />
+                <h:commandLink action="#{feedback2013ExitSurveyController.prepareList}" value="#{bundle.ViewFeedback2013ExitSurveyShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewFeedback2013ExitSurveyIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

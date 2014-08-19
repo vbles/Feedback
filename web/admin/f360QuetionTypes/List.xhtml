@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/common/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListF360QuetionTypesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListF360QuetionTypesEmpty}" rendered="#{f360QuetionTypesController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{f360QuetionTypesController.items.rowCount > 0}">
+                    <h:outputText value="#{f360QuetionTypesController.pagination.pageFirstItem + 1}..#{f360QuetionTypesController.pagination.pageLastItem + 1}/#{f360QuetionTypesController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{f360QuetionTypesController.previous}" value="#{bundle.Previous} #{f360QuetionTypesController.pagination.pageSize}" rendered="#{f360QuetionTypesController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{f360QuetionTypesController.next}" value="#{bundle.Next} #{f360QuetionTypesController.pagination.pageSize}" rendered="#{f360QuetionTypesController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{f360QuetionTypesController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListF360QuetionTypesTitle_idType}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idType}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListF360QuetionTypesTitle_typeText}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.typeText}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{f360QuetionTypesController.prepareView}" value="#{bundle.ListF360QuetionTypesViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{f360QuetionTypesController.prepareEdit}" value="#{bundle.ListF360QuetionTypesEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{f360QuetionTypesController.destroy}" value="#{bundle.ListF360QuetionTypesDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{f360QuetionTypesController.prepareCreate}" value="#{bundle.ListF360QuetionTypesCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListF360QuetionTypesIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/common/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewF360CommentsDepartmentTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewF360CommentsDepartmentLabel_id}"/>
+                    <h:outputText value="#{f360CommentsDepartmentController.selected.id}" title="#{bundle.ViewF360CommentsDepartmentTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewF360CommentsDepartmentLabel_comments}"/>
+                    <h:outputText value="#{f360CommentsDepartmentController.selected.comments}" title="#{bundle.ViewF360CommentsDepartmentTitle_comments}"/>
+                    <h:outputText value="#{bundle.ViewF360CommentsDepartmentLabel_uid}"/>
+                    <h:outputText value="#{f360CommentsDepartmentController.selected.uid}" title="#{bundle.ViewF360CommentsDepartmentTitle_uid}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{f360CommentsDepartmentController.destroyAndView}" value="#{bundle.ViewF360CommentsDepartmentDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewF360CommentsDepartmentEditLink}"/>
+                <br />
+                <h:commandLink action="#{f360CommentsDepartmentController.prepareCreate}" value="#{bundle.ViewF360CommentsDepartmentCreateLink}" />
+                <br />
+                <h:commandLink action="#{f360CommentsDepartmentController.prepareList}" value="#{bundle.ViewF360CommentsDepartmentShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewF360CommentsDepartmentIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

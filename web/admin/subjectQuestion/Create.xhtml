@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateSubjectQuestionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateSubjectQuestionLabel_idSubjectQuestions}" for="idSubjectQuestions" />
+                    <h:inputText id="idSubjectQuestions" value="#{subjectQuestionController.selected.idSubjectQuestions}" title="#{bundle.CreateSubjectQuestionTitle_idSubjectQuestions}" required="true" requiredMessage="#{bundle.CreateSubjectQuestionRequiredMessage_idSubjectQuestions}"/>
+                    <h:outputLabel value="#{bundle.CreateSubjectQuestionLabel_qno}" for="qno" />
+                    <h:inputText id="qno" value="#{subjectQuestionController.selected.qno}" title="#{bundle.CreateSubjectQuestionTitle_qno}" />
+                    <h:outputLabel value="#{bundle.CreateSubjectQuestionLabel_qtext}" for="qtext" />
+                    <h:inputTextarea rows="4" cols="30" id="qtext" value="#{subjectQuestionController.selected.qtext}" title="#{bundle.CreateSubjectQuestionTitle_qtext}" />
+                    <h:outputLabel value="#{bundle.CreateSubjectQuestionLabel_idSubject}" for="idSubject" />
+                    <h:selectOneMenu id="idSubject" value="#{subjectQuestionController.selected.idSubject}" title="#{bundle.CreateSubjectQuestionTitle_idSubject}" >
+                        <f:selectItems value="#{subjectController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{subjectQuestionController.create}" value="#{bundle.CreateSubjectQuestionSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{subjectQuestionController.prepareList}" value="#{bundle.CreateSubjectQuestionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateSubjectQuestionIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

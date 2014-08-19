@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/common/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListFeedback2013SuggestionsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListFeedback2013SuggestionsEmpty}" rendered="#{feedback2013SuggestionsController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{feedback2013SuggestionsController.items.rowCount > 0}">
+                    <h:outputText value="#{feedback2013SuggestionsController.pagination.pageFirstItem + 1}..#{feedback2013SuggestionsController.pagination.pageLastItem + 1}/#{feedback2013SuggestionsController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{feedback2013SuggestionsController.previous}" value="#{bundle.Previous} #{feedback2013SuggestionsController.pagination.pageSize}" rendered="#{feedback2013SuggestionsController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{feedback2013SuggestionsController.next}" value="#{bundle.Next} #{feedback2013SuggestionsController.pagination.pageSize}" rendered="#{feedback2013SuggestionsController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{feedback2013SuggestionsController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFeedback2013SuggestionsTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFeedback2013SuggestionsTitle_uid}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.uid}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFeedback2013SuggestionsTitle_suggestions}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.suggestions}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{feedback2013SuggestionsController.prepareView}" value="#{bundle.ListFeedback2013SuggestionsViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{feedback2013SuggestionsController.prepareEdit}" value="#{bundle.ListFeedback2013SuggestionsEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{feedback2013SuggestionsController.destroy}" value="#{bundle.ListFeedback2013SuggestionsDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{feedback2013SuggestionsController.prepareCreate}" value="#{bundle.ListFeedback2013SuggestionsCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListFeedback2013SuggestionsIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

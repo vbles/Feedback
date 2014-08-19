@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/common/template.xhtml">
+        <ui:define name="title">
+
+        </ui:define>
+        <ui:define name="body">
+            <p:panelGrid columns="5" style="text-align: center; display: inline-block" >
+                <h:outputText style="font-size: xx-large" value="*" />
+            <h:outputText style="font-size: xx-large" value="**" />
+            <h:outputText style="font-size: xx-large" value="***" />
+            <h:outputText style="font-size: xx-large" value="****" />
+            <h:outputText style="font-size: xx-large" value="*****" />
+            <h:outputText value="Strongly Disagree" />
+            <h:outputText value="Disagree" />
+            <h:outputText value="Neutral" />
+            <h:outputText value="Agree" />
+            <h:outputText value="Strongly Agree" />
+            </p:panelGrid>
+
+            <h:form id="form">
+                <p:growl id="messages" showDetail="true"/>  
+
+
+
+                <p:dataGrid columns="2" value="#{feedback2013QuestionController.getqList()}" var="c">
+                    <p:panel >
+                        <h:outputText style="font-size: larger" value="#{c.q.qno}#{'.  '}#{c.q.qtext}"></h:outputText>
+
+                        <p:dataTable value="#{c.fsList}" var="item" rowIndexVar="i" >                      
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Faculty Name"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idFaculty.facultyFname}#{' '}#{item.idFaculty.facultyLname}"/>
+                        <br />
+                        <h:outputText value="#{item.idSubject.subjectCode}"/>
+                    </p:column>
+                    <p:column id="rating">
+                        <f:facet name="header">
+                            <h:outputText value="Rating"/>
+                        </f:facet>
+                        <p:rating  value="#{c.ratings[i]}"  >
+                            <p:ajax event="rate" listener="#{feedback2013Controller.onrate}" update=":form:messages" />  
+                            <p:ajax event="cancel" listener="#{feedback2013Controller.oncancel}" update=":form:messages" />  
+                        </p:rating>
+                    </p:column>
+
+                </p:dataTable>
+                    </p:panel>
+                </p:dataGrid>
+
+                            </h:form>
+            <h:form>
+                <p:commandButton action="#{feedback2013QuestionController.submit(1)}" value="Submit" />
+            </h:form>
+            
+
+        </ui:define>
+    </ui:composition>
+
+</html>

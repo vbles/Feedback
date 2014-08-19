@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/common/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewF360UserTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewF360UserLabel_uid}"/>
+                    <h:outputText value="#{f360UserController.selected.uid}" title="#{bundle.ViewF360UserTitle_uid}"/>
+                    <h:outputText value="#{bundle.ViewF360UserLabel_pwd}"/>
+                    <h:outputText value="#{f360UserController.selected.pwd}" title="#{bundle.ViewF360UserTitle_pwd}"/>
+                    <h:outputText value="#{bundle.ViewF360UserLabel_department}"/>
+                    <h:outputText value="#{f360UserController.selected.department}" title="#{bundle.ViewF360UserTitle_department}"/>
+                    <h:outputText value="#{bundle.ViewF360UserLabel_timeFirstLogin}"/>
+                    <h:outputText value="#{f360UserController.selected.timeFirstLogin}" title="#{bundle.ViewF360UserTitle_timeFirstLogin}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewF360UserLabel_timeLastLogout}"/>
+                    <h:outputText value="#{f360UserController.selected.timeLastLogout}" title="#{bundle.ViewF360UserTitle_timeLastLogout}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{f360UserController.destroyAndView}" value="#{bundle.ViewF360UserDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewF360UserEditLink}"/>
+                <br />
+                <h:commandLink action="#{f360UserController.prepareCreate}" value="#{bundle.ViewF360UserCreateLink}" />
+                <br />
+                <h:commandLink action="#{f360UserController.prepareList}" value="#{bundle.ViewF360UserShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewF360UserIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

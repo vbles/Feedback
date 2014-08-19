@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/common/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditFeedback2013SuggestionsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditFeedback2013SuggestionsLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{feedback2013SuggestionsController.selected.id}" title="#{bundle.EditFeedback2013SuggestionsTitle_id}" required="true" requiredMessage="#{bundle.EditFeedback2013SuggestionsRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditFeedback2013SuggestionsLabel_uid}" for="uid" />
+                    <h:inputText id="uid" value="#{feedback2013SuggestionsController.selected.uid}" title="#{bundle.EditFeedback2013SuggestionsTitle_uid}" />
+                    <h:outputLabel value="#{bundle.EditFeedback2013SuggestionsLabel_suggestions}" for="suggestions" />
+                    <h:inputTextarea rows="4" cols="30" id="suggestions" value="#{feedback2013SuggestionsController.selected.suggestions}" title="#{bundle.EditFeedback2013SuggestionsTitle_suggestions}" />
+                </h:panelGrid>
+                <h:commandLink action="#{feedback2013SuggestionsController.update}" value="#{bundle.EditFeedback2013SuggestionsSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditFeedback2013SuggestionsViewLink}"/>
+                <br />
+                <h:commandLink action="#{feedback2013SuggestionsController.prepareList}" value="#{bundle.EditFeedback2013SuggestionsShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditFeedback2013SuggestionsIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListFeedback2013ExitSurveyTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListFeedback2013ExitSurveyEmpty}" rendered="#{feedback2013ExitSurveyController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{feedback2013ExitSurveyController.items.rowCount > 0}">
+                    <h:outputText value="#{feedback2013ExitSurveyController.pagination.pageFirstItem + 1}..#{feedback2013ExitSurveyController.pagination.pageLastItem + 1}/#{feedback2013ExitSurveyController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{feedback2013ExitSurveyController.previous}" value="#{bundle.Previous} #{feedback2013ExitSurveyController.pagination.pageSize}" rendered="#{feedback2013ExitSurveyController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{feedback2013ExitSurveyController.next}" value="#{bundle.Next} #{feedback2013ExitSurveyController.pagination.pageSize}" rendered="#{feedback2013ExitSurveyController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{feedback2013ExitSurveyController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFeedback2013ExitSurveyTitle_idFeedback2013exitsurvey}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idFeedback2013exitsurvey}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFeedback2013ExitSurveyTitle_idSubjectQuestions}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idSubjectQuestions}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFeedback2013ExitSurveyTitle_ans}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ans}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFeedback2013ExitSurveyTitle_subjectQuestion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.subjectQuestion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFeedback2013ExitSurveyTitle_uid}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.uid}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{feedback2013ExitSurveyController.prepareView}" value="#{bundle.ListFeedback2013ExitSurveyViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{feedback2013ExitSurveyController.prepareEdit}" value="#{bundle.ListFeedback2013ExitSurveyEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{feedback2013ExitSurveyController.destroy}" value="#{bundle.ListFeedback2013ExitSurveyDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{feedback2013ExitSurveyController.prepareCreate}" value="#{bundle.ListFeedback2013ExitSurveyCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListFeedback2013ExitSurveyIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
