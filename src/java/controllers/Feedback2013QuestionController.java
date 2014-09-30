@@ -300,11 +300,9 @@ public class Feedback2013QuestionController implements Serializable {
         indexPractical = 0;
         if (type == 0) {
             submitTheory = true;
-            submitPractical = true; // Temporary - as no need for practical feedback
-            
+        } else {
+            submitPractical = true;
         }
-        /*else
-         submitPractical = true;*/
         return "SelectSubject?faces-redirect=true";
     }
 
