@@ -42,7 +42,7 @@
                         <p:commandButton action="#{subjectQuestionController.nextQuestion()}" value="Next" />
 
                     </p:layoutUnit>
-                    <p:layoutUnit position="east" resizable="true" maxSize="400">
+                    <p:layoutUnit position="east" resizable="true" maxSize="400" rendered="false">
                         <p:panel style="width: 100%">
                             <p:dataList value="#{subjectObjectiveController.getItemsUser(subjectQuestionController.sub)}" var="c">
                                 <f:facet name="header">
