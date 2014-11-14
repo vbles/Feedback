@@ -17,16 +17,16 @@
                     <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
                 </h:panelGroup>
                 <h:panelGroup  style="text-align: center; font-size: 100%; vertical-align: text-top">
-                    <p:commandButton rendered="#{feedback2013StudentController.loggedUser.semester eq 2}" action="#{subjectQuestionController.navCourseSurvey}" immediate="true" value="Course Exit Survey" ></p:commandButton>
+                    <p:commandButton rendered="#{feedback2013StudentController.loggedUser.semester eq 1 and !subjectQuestionController.submitCourse}" action="#{subjectQuestionController.navCourseSurvey}" immediate="true" value="Course Exit Survey" ></p:commandButton>
                     <br/>
                     <p:commandButton rendered="#{!feedback2013QuestionController.submitTheory}" action="#{feedback2013QuestionController.theoryQuestionnaire1()}" immediate ="true" value="Theory" ></p:commandButton>
                     <p:commandButton rendered="#{!feedback2013QuestionController.submitPractical}" action="#{feedback2013QuestionController.practicalQuestionnaire1()}" immediate="true" value="Practical" ></p:commandButton>
-                    <p:outputLabel style="font-size: larger" rendered="#{feedback2013QuestionController.submitPractical and feedback2013QuestionController.submitTheory }" value="Thank you for your valuable feedback. " />
+                    <p:outputLabel style="font-size: larger" rendered="#{feedback2013QuestionController.submitPractical and feedback2013QuestionController.submitTheory and subjectQuestionController.submitCourse}" value="Thank you for your valuable feedback. " />
                     <br />
                     <br />
                     
                     <p:commandButton rendered="false" value="Suggestions" action="#{feedback2013SuggestionsController.prepareSuggestion()}" ajax="false" />
-                    <p:commandButton rendered="#{feedback2013QuestionController.submitPractical and feedback2013QuestionController.submitTheory }" action="#{authBackingBean.logout()}" value="Logout" ajax="false" />
+                    <p:commandButton rendered="#{feedback2013QuestionController.submitPractical and feedback2013QuestionController.submitTheory and subjectQuestionController.submitCourse}" action="#{authBackingBean.logout()}" value="Logout" ajax="false" />
 
                     <!-- and subjectQuestionController.submitCourse -->
                     
