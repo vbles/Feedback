@@ -16,29 +16,17 @@
                 <p:growl id="messages" showDetail="true"/>  
 
                 <p:panel rendered="#{f360CommentsDepartmentController.comment == null}" style="width: 50%">
-                    <p:outputLabel value="Write a few lines about the department. " />
+                    <p:outputLabel value="Write a few lines about the department. " /><br />
                     <p:inputTextarea rows="5" cols="50" value="#{f360CommentsDepartmentController.selected.comments}" ></p:inputTextarea>
 
-                    <br />
+                    <br /> <br />
                     <p:commandButton actionListener="#{f360CommentsDepartmentController.ajaxCreate()}" update=":comment:messages :comment" value="Submit" >
                     </p:commandButton>
                 </p:panel>
             </h:form>
             
             <br />
-                <p:panelGrid columns="2" style="font-family: monospace; position: relative; float: right" >
-                <h:outputText value="*"/>
-                <h:outputText value="Strongly Disagree    " />
-                <h:outputText value="* *"/>
-                <h:outputText value="Disagree" />
-                <h:outputText value="* * *"/>
-                <h:outputText value="Neutral" />
-                <h:outputText value="* * * *"/>
-                <h:outputText value="Agree" />
-                <h:outputText value="* * * * *"/>
-                <h:outputText value="Strongly Agree" />
-
-            </p:panelGrid>
+                
             <h:form id="form">
                 <p:growl id="messages" showDetail="true"/>  
 
@@ -69,7 +57,7 @@
 
                 
                 <br />
-                <p:commandButton action="#{f360FeedbackDepartmentController}" value="Submit" />
+                
             </h:form>
             
 
